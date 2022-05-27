@@ -1,0 +1,9 @@
+#img-bg {
+    min-height: 961px;
+
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/2/22/Da_Vinci_Vitruve_Luc_Viatour.jpg");
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
