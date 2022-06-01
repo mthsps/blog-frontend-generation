@@ -7,33 +7,38 @@
             <h1 class="text-center">Sign up</h1>
             <div class="form-group">
               <label for="name">Name</label>
-              <input class="form-control" type="text" name="name" id="name" placeholder="Your name">
+              <input [(ngModel)]="user.name" class="form-control" type="text" name="name" id="name" placeholder="Your name">
             </div>
   
             <div class="form-group">
               <label for="username">Username</label>
-              <input class="form-control" type="text" name="username" id="username" placeholder="Your username">
+              <input [(ngModel)]="user.username" class="form-control" type="text" name="username" id="username" placeholder="Your username">
+            </div>
+
+            <div class="form-group">
+              <label for="username">E-mail</label>
+              <input [(ngModel)]="user.email" class="form-control" type="text" name="email" id="email" placeholder="Your email">
             </div>
   
             <div class="form-group">
               <label for="photo-url">Photo URL</label>
-              <input class="form-control" type="text" name="photo-url" id="photo-url" placeholder="Your photo url">
+              <input [(ngModel)]="user.imageUrl" class="form-control" type="text" name="photo-url" id="photo-url" placeholder="Your photo url">
             </div>
   
             <div class="form-group">
               <label for="password">Password</label>
-              <input class="form-control" type="password" name="password" id="password" placeholder="Your password">
+              <input [(ngModel)]="user.password" class="form-control" type="password" name="password" id="password" placeholder="Your password">
             </div>
   
             <div class="form-group">
               <label for="confirmpassword">Confirm password</label>
-              <input class="form-control" type="password" name="confirmpassword" id="confirmpassword"
+              <input (input)="confirmPassword($event)" class="form-control" type="password" name="confirmpassword" id="confirmpassword"
                 placeholder="Confirm your password">
             </div>
   
             <div class="form-group">
             <label>User type</label>
-              <select class="form-control" name="type" id="type">
+              <select class="form-control" name="type" id="type" (change)="selectUserType($event)">
                 <option>Select an user type</option>
                 <option value="normal">Normal</option>
                 <option value="admin">Admin</option>
@@ -42,7 +47,7 @@
   
             <div class="d-flex justify-content-center mt-5">
               <button type="submit" class="btn btn-danger mr-4" routerLink="/signin">Cancel</button>
-              <button type="submit" class="btn btn-primary">Sign up</button>
+              <button type="submit" class="btn btn-primary" (click)="signup()">Sign up</button>
             </div>
   
           </div>
