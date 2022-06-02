@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  name = environment.name
+  photo = (environment.imageUrl==null) ? "https://randomuser.me/api/portraits/lego/7.jpg" : environment.imageUrl
+
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  signout() {
+    this.router.navigate(['/signin'])
+    environment.email = ''
+    environment.name = ''
+    environment.token = ''
+    environment.imageUrl = ''
+    environment.id = 0
   }
 
 }
