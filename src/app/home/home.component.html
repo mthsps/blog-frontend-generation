@@ -1,1 +1,77 @@
-<p>home works!</p>
+<div class="container-fluid">
+    <div class="row bg-color d-flex align-items-center">
+      <div class="col-md-6">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-6">
+            <h1 class="fs-54">Welcome!</h1>
+            <h5 class="fs-18">Share your thoughts...</h5>
+          </div>
+        </div>
+  
+        <div class="row d-flex justify-content-center mt-3 mb-5">
+          <div class="col-md-6">
+            <button class="btn btn-light mr-2" data-toggle="modal" data-target="#new-post">New post</button>
+            <a class="btn btn-light mr-2" href="#posts">See post</a>
+          </div>
+        </div>
+  
+      </div>
+      <div class="col-md-6 d-flex justify-content-center">
+        <img src="https://i.imgur.com/f7hX6RJ.png" alt="" width="550px" height="550px">
+      </div>
+    </div>
+  </div>
+  <!-- container home -->
+  
+  <!-- menu posts -->
+  <div class="container mb-5 mt-5" id="posts">
+    <nav>
+      <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active text-secondary font-weight-bold" id="nav-allposts-tab" data-toggle="tab" href="#allposts" role="tab"
+          aria-controls="nav-allposts-tab" aria-selected="true">All posts</a>
+        <a class="nav-item nav-link text-secondary font-weight-bold" id="nav-myposts-tab" data-toggle="tab" href="#myposts" role="tab"
+          aria-controls="nav-myposts" aria-selected="false">My posts</a>
+        <a class="nav-item nav-link text-secondary font-weight-bold" id="nav-bytheme-tab" data-toggle="tab" href="#bytheme" role="tab"
+          aria-controls="nav-bytheme" aria-selected="false">Posts by theme</a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="allposts" role="tabpanel" aria-labelledby="nav-allposts-tab">All posts</div>
+      <div class="tab-pane fade" id="myposts" role="tabpanel" aria-labelledby="nav-myposts-tab">My posts</div>
+      <div class="tab-pane fade" id="portheme" role="tabpanel" aria-labelledby="nav-portheme-tab">By theme</div>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="new-post" tabindex="-1" role="dialog" aria-labelledby="title-modal-centered" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="title-modal-centered">New post</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" placeholder="Type a title">
+          </div>
+          <div class="form-group">
+            <label for="text">Text</label>
+            <textarea class="form-control" name="text" id="text" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="text">Choose a theme or <a data-dismiss="modal" routerLink="/theme">add a new one</a>:</label>
+            <select class="form-control" name="theme" id="theme">
+              <option value="">Themes</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-success">Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
