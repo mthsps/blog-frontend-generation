@@ -1,0 +1,29 @@
+<div class="container mb-5 mt-5">
+
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <h1 class="text-center text-secondary">Delete theme</h1>
+      </div>
+    </div>
+  
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <h4 class="text-center text-secondary">Are you sure about deleting this theme? </h4>
+      </div>
+    </div>
+  
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <h5 class="text-center text-primary">Theme: {{theme.description}}</h5>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-12 d-flex justify-content-center">
+        <button class="btn btn-danger mr-4" routerLink='/themes' >No</button>
+        <button class="btn btn-success" (click)='delete()'>Yes</button>
+      </div>
+    </div>
+  
+  
+  </div>
