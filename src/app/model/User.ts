@@ -8,5 +8,5 @@ export class User {
     public password: string
     public imageUrl: string
     public type: string
-    public post: Post[]
+    public posts: Post[]
 }

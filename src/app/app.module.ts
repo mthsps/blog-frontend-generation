@@ -15,6 +15,8 @@ import { HomeComponent } from './home/home.component';
 import { ThemeComponent } from './theme/theme.component';
 import { ThemeDeleteComponent } from './theme-delete/theme-delete.component';
 import { ThemeEditComponent } from './theme-edit/theme-edit.component';
+import { PostDeleteComponent } from './post-delete/post-delete.component';
+import { PostEditComponent } from './post-edit/post-edit.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ThemeEditComponent } from './theme-edit/theme-edit.component';
     HomeComponent,
     ThemeComponent,
     ThemeDeleteComponent,
-    ThemeEditComponent
+    ThemeEditComponent,
+    PostDeleteComponent,
+    PostEditComponent
   ],
   imports: [
     BrowserModule,

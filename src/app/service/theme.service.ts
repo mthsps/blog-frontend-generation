@@ -18,23 +18,23 @@ export class ThemeService {
   }
 
   getAllThemes(): Observable<Theme[]>{
-    return this.http.get<Theme[]>('https://personalblogspring.herokuapp.com/themes', this.token)
+    return this.http.get<Theme[]>('https://springbackendblog.herokuapp.com/themes', this.token)
   }
 
   postTheme(theme:Theme): Observable<Theme>{
-    return this.http.post<Theme>('https://personalblogspring.herokuapp.com/themes', theme, this.token)
+    return this.http.post<Theme>('https://springbackendblog.herokuapp.com/themes', theme, this.token)
   }
 
   getByIdTheme(id: number): Observable<Theme>{
-    return this.http.get<Theme>(`https://personalblogspring.herokuapp.com/themes/${id}`, this.token)
+    return this.http.get<Theme>(`https://springbackendblog.herokuapp.com/themes/${id}`, this.token)
   }
 
   putTheme(theme: Theme): Observable<Theme>{
-    return this.http.put<Theme>('https://personalblogspring.herokuapp.com/themes', theme, this.token)
+    return this.http.put<Theme>('https://springbackendblog.herokuapp.com/themes', theme, this.token)
   }
 
   deleteTheme(id: number): Observable<Theme>{
-    return this.http.delete<Theme>(`https://personalblogspring.herokuapp.com/themes/${id}`, this.token)
+    return this.http.delete<Theme>(`https://springbackendblog.herokuapp.com/themes/${id}`, this.token)
   }
 
 }

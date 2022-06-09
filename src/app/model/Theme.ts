@@ -3,5 +3,6 @@ import { Post } from "./Post"
 export class Theme {
     public id: number
     public description: string 
-    public post: Post[]
+    public posts: Post[]
+    public createdAt: Date
 }

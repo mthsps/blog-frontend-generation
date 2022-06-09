@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
@@ -16,14 +16,24 @@ export class AuthService {
     
   }
 
+  token = {
+    headers: new HttpHeaders().set('Authorization', environment.token),
+  };
+
   signin(userLogin: UserLogin): Observable<UserLogin>{
-    return this.http.post<UserLogin>("https://personalblogspring.herokuapp.com/users/login", userLogin)
+    return this.http.post<UserLogin>("https://springbackendblog.herokuapp.com/users/login", userLogin)
   }
 
   signup(user: User): Observable<User>{
-    return this.http.post<User>("https://personalblogspring.herokuapp.com/users/signup", user)
+    return this.http.post<User>("https://springbackendblog.herokuapp.com/users/signup", user)
     
   }
+
+  getByIdUser(id: number): Observable<User>{
+    return this.http.get<User>(`https://springbackendblog.herokuapp.com/users/${id}`, 
+    {headers: new HttpHeaders().set('Authorization', environment.token)})
+  }
+
 
   signedin(){
     return environment.token != ''
