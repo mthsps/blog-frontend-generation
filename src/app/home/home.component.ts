@@ -33,6 +33,8 @@ export class HomeComponent implements OnInit {
   ) { }
   ngOnInit() {
 
+    window.scroll(0,0)
+
     if(environment.token == '') {
       alert("Your session expired... Sign in again.")
       this.router.navigate(['/signin'])

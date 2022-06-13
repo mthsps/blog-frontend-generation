@@ -10,11 +10,12 @@
           <img src="{{photo}}" alt="User image profile" width="50px" height="50px"
             class="img-fluid rounded-circle">
         </li>
+
         <li class="nav-item pl-3">
-          <p class="m-0 font-weight-bold text-white fs-16">{{name}}</p>
+            <p class="m-0 font-weight-bold text-white fs-16">{{name}}</p>
         </li>
         <li>
-          <a class="btn btn-link btn-floating btn-lg text-light m-1" href="" role="button" data-mdb-ripple-color="dark" aria-hidden="true">
+          <a [routerLink]="['/users/edit', id]" class="btn btn-link btn-floating btn-lg text-light m-1" href="" role="button" data-mdb-ripple-color="dark" aria-hidden="true">
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
           </a>
         </li>

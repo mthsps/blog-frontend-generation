@@ -1,0 +1,63 @@
+<div class="container mb-5 mt-5">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center text-sencondary">Update user</h1>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+
+            <div class="form-group">
+                <label for="nome">Name</label>
+                <input [(ngModel)]='user.name' class="form-control" type="text" name="name" id="name"
+                    placeholder="Your name">
+            </div>
+
+            <div class="form-group">
+                <label for="user">Username</label>
+                <input [(ngModel)]='user.username' class="form-control" type="text" name="user" id="user"
+                    placeholder="Your username">
+            </div>
+
+            <div class="form-group">
+                <label for="user">E-mail</label>
+                <input [(ngModel)]='user.email' class="form-control" type="text" name="email" id="email"
+                    placeholder="Your email">
+            </div>
+
+            <div class="form-group">
+                <label for="foto">Photo URL</label>
+                <input [(ngModel)]='user.imageUrl' class="form-control" type="text" name="photo" id="photo"
+                    placeholder="Photo URL">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input (input)='confirmPassword($event)' class="form-control" type="password" name="password"
+                    id="password" placeholder="Sua password">
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm password</label>
+                <input [(ngModel)]='user.password' class="form-control" type="password" name="confirmPassword"
+                    id="confirmPassword" placeholder="Confirm password">
+            </div>
+
+            <div class="form-group">
+                <label for="type">User type</label>
+                <select class="form-control" name="type" id="type" (change)='userType($event)'>
+                    <option>Select user type:</option>
+                    <option value="normal">Normal</option>
+                    <option value="adm">Admin</option>
+                </select>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-danger mr-4" routerLink='/signin'>Cancel</button>
+                <button type="submit" class="btn btn-success" (click)='update()'>Update</button>
+            </div>
+
+        </div>
+    </div>

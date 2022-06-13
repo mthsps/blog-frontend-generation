@@ -11,7 +11,8 @@ export class MenuComponent implements OnInit {
 
   name = environment.name
   photo = (environment.imageUrl==null) ? "https://randomuser.me/api/portraits/lego/7.jpg" : environment.imageUrl
-
+  id = environment.id
+  
   constructor(
     private router: Router
   ) { }

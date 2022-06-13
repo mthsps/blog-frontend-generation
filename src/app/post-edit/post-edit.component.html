@@ -24,7 +24,7 @@
             <div class="form-group">
                 <label for="content">Choose a theme or <a data-dismiss="modal" routerLink='/themes'>create a new one</a>:
                 </label>
-                <select name="theme" id="theme" class="form-control" [(ngModel)]='idTheme' (change)='findByIdTheme()'>
+                <select name="theme" id="theme" class="form-control" [(ngModel)]='theme.id' (change)='findByIdTheme()'>
                     <option *ngFor='let item of themes' value="{{item.id}}">
                         {{item.description}}
                     </option>

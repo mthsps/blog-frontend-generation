@@ -8,6 +8,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ThemeDeleteComponent } from './theme-delete/theme-delete.component';
 import { ThemeEditComponent } from './theme-edit/theme-edit.component';
 import { ThemeComponent } from './theme/theme.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 const routes: Routes = [
   
@@ -22,7 +23,9 @@ const routes: Routes = [
   {path: 'themes/edit/:id', component: ThemeEditComponent},
 
   {path: 'posts/edit/:id', component:PostEditComponent},
-  {path: 'posts/delete/:id', component:PostDeleteComponent}
+  {path: 'posts/delete/:id', component:PostDeleteComponent},
+
+  {path: 'users/edit/:id', component:UserEditComponent}
 
 ];
 
