@@ -15,7 +15,6 @@ export class UserEditComponent implements OnInit {
   user: User = new User()
   idUser: number
   confirmedPassword: string
-  selectedUserType: string
 
   constructor(
     private authService: AuthService,
@@ -44,10 +43,10 @@ export class UserEditComponent implements OnInit {
   }
 
   update() {
-    this.user.type = this.selectedUserType
+    this.user.posts = []
 
     if (this.user.password != this.confirmedPassword) {
-      alert('Password incorrect')
+      alert('Passwords are different')
     } else {
       this.userService.putUser(this.user).subscribe((resp: User) => {
         this.user = resp
@@ -66,6 +65,7 @@ export class UserEditComponent implements OnInit {
   findByIdUser(id: number) {
     this.authService.getByIdUser(id).subscribe((resp: User) => {
       this.user = resp
+      this.user.password = ""
     })
   }
 

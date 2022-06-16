@@ -46,6 +46,7 @@ export class PostEditComponent implements OnInit {
   }
 
   findByIdTheme(){
+    this.idTheme = this.post.theme.id
     this.themeService.getByIdTheme(this.idTheme).subscribe((resp: Theme) => {
       this.theme = resp
     })

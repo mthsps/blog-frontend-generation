@@ -18,23 +18,28 @@ export class ThemeService {
   }
 
   getAllThemes(): Observable<Theme[]>{
-    return this.http.get<Theme[]>('https://springbackendblog.herokuapp.com/themes', this.token)
+    return this.http.get<Theme[]>('https://springbackendblog.herokuapp.com/themes',  
+    {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
 
   postTheme(theme:Theme): Observable<Theme>{
-    return this.http.post<Theme>('https://springbackendblog.herokuapp.com/themes', theme, this.token)
+    return this.http.post<Theme>('https://springbackendblog.herokuapp.com/themes', theme,  
+    {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
 
   getByIdTheme(id: number): Observable<Theme>{
-    return this.http.get<Theme>(`https://springbackendblog.herokuapp.com/themes/${id}`, this.token)
+    return this.http.get<Theme>(`https://springbackendblog.herokuapp.com/themes/${id}`,  
+    {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
 
   putTheme(theme: Theme): Observable<Theme>{
-    return this.http.put<Theme>('https://springbackendblog.herokuapp.com/themes', theme, this.token)
+    return this.http.put<Theme>('https://springbackendblog.herokuapp.com/themes', theme,  
+    {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
 
   deleteTheme(id: number): Observable<Theme>{
-    return this.http.delete<Theme>(`https://springbackendblog.herokuapp.com/themes/${id}`, this.token)
+    return this.http.delete<Theme>(`https://springbackendblog.herokuapp.com/themes/${id}`,  
+    {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
 
 }
