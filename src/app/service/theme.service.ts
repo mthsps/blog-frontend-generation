@@ -32,6 +32,11 @@ export class ThemeService {
     {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
 
+  getThemeByDescription(themeDescription: string): Observable<Theme[]> {
+    return this.http.get<Theme[]>(`https://springbackendblog.herokuapp.com/themes/name/${themeDescription}`,  
+    {headers: new HttpHeaders().set('Authorization', environment.token)})
+  }
+
   putTheme(theme: Theme): Observable<Theme>{
     return this.http.put<Theme>('https://springbackendblog.herokuapp.com/themes', theme,  
     {headers: new HttpHeaders().set('Authorization', environment.token)})

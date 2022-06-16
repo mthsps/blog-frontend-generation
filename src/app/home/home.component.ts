@@ -18,13 +18,16 @@ export class HomeComponent implements OnInit {
 
   post: Post = new Post()
   posts: Post[]
+  postTitle: string
 
   theme: Theme = new Theme()
   themes: Theme[]
   idTheme: number
+  themeDescription: string
 
   user: User = new User()
   idUser = environment.id
+  
 
   constructor(
     private router: Router,
@@ -33,6 +36,7 @@ export class HomeComponent implements OnInit {
     private alertService: AlertsService,
     private authService: AuthService
   ) { }
+
   ngOnInit() {
 
     window.scroll(0,0)
@@ -42,9 +46,9 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/signin'])
     }
 
+    console.log("I'm here")
     this.getAllThemes()
     this.getAllPosts()
-
   }
 
   getAllThemes(){
@@ -69,6 +73,26 @@ export class HomeComponent implements OnInit {
     this.authService.getByIdUser(this.idUser).subscribe((resp: User) => {
       this.user = resp
     })
+  }
+
+  findPostByTitle(){
+    if(this.postTitle == ''){
+      this.getAllPosts()
+    } else {
+      this.postService.getPostByTitle(this.postTitle).subscribe((resp: Post[])=>{
+        this.posts = resp
+      })
+    }
+  }
+
+  findThemeByDescription(){
+    if(this.themeDescription == ''){
+      this.getAllThemes()
+    } else {
+      this.themeService.getThemeByDescription(this.themeDescription).subscribe((resp: Theme[])=>{
+        this.themes = resp
+      })
+    }
   }
 
   publish(){

@@ -25,6 +25,11 @@ export class PostService {
     {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
 
+  getPostByTitle(postTitle: string): Observable<Post[]>{
+    return this.http.get<Post[]>(`https://springbackendblog.herokuapp.com/posts/title/${postTitle}`,  
+    {headers: new HttpHeaders().set('Authorization', environment.token)})
+  }
+
 
   postPost(post: Post) : Observable<Post>{
     return this.http.post<Post>('https://springbackendblog.herokuapp.com/posts', post,  

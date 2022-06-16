@@ -11,7 +11,7 @@
       <div class="row d-flex justify-content-center mt-3 mb-5">
         <div class="col-md-6">
           <button class="btn btn-light mr-2" data-toggle="modal" data-target="#new-post">New post</button>
-          <a class="btn btn-light mr-2" href="#posts">See post</a>
+          <a class="btn btn-light mr-2" href="#posts">See posts</a>
         </div>
       </div>
 
@@ -27,31 +27,43 @@
 <div class="container mb-5 mt-5" id="posts">
   <nav>
     <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link active text-secondary font-weight-bold" id="nav-allposts-tab" data-toggle="tab"
-        href="#allposts" role="tab" aria-controls="nav-allposts-tab" aria-selected="true">All posts
+      <a class="nav-item nav-link text-secondary font-weight-bold" id="nav-allposts-tab" data-toggle="tab"
+        href="#allposts" role="tab" aria-controls="nav-allposts-tab" aria-selected="false">All posts
       </a>
-      <a (click)='findByIdUser()' class="nav-item nav-link text-secondary font-weight-bold" id="nav-myposts-tab"
-        data-toggle="tab" href="#myposts" role="tab" aria-controls="nav-myposts" aria-selected="false">My posts
+      <a (click)='findByIdUser()' class="nav-item nav-link active text-secondary font-weight-bold" id="nav-myposts-tab"
+        data-toggle="tab" href="#myposts" role="tab" aria-controls="nav-myposts" aria-selected="true">My posts
       </a>
-      <a class="nav-item nav-link text-secondary font-weight-bold" id="nav-bytheme-tab"
-        data-toggle="tab" href="#bytheme" role="tab" aria-controls="nav-bytheme" aria-selected="false">Posts by theme
+      <a class="nav-item nav-link text-secondary font-weight-bold" id="nav-bytheme-tab" data-toggle="tab"
+        href="#bytheme" role="tab" aria-controls="nav-bytheme" aria-selected="false">Posts by theme
       </a>
     </div>
   </nav>
 
 
+
   <div class="tab-content mt-5" id="nav-tabContent">
     <div class="tab-pane fade show active" id="allposts" role="tabpanel" aria-labelledby="nav-allposts-tab">
 
-      <div class="card-columns">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-4">
+
+          <div class="form-group mb-5">
+            <input type="text" class="form-control" id="titleSearch" placeholder="Search by title"
+              [(ngModel)]='postTitle' (keyup)='findPostByTitle()'>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="card-columns" *ngIf='posts?.length != 0'>
         <div class="card text-center" *ngFor='let post of posts'>
           <div class="card-body">
             <h5 class="card-title m-0">{{post.title}}</h5>
             <small class="text-muted"> Theme: {{post.theme.description}}</small>
             <p class="card-text mt-3">{{post.content}}</p>
             <p class="card-text"><small class="text-muted">
-              {{post.createdAt | date: 'dd/MM/yyyy'}} at {{post.createdAt | date: 'HH:mm'}}
-            </small></p>
+                {{post.createdAt | date: 'dd/MM/yyyy'}} at {{post.createdAt | date: 'HH:mm'}}
+              </small></p>
 
             <p class="card-text"><small class="text-muted">
                 by: {{post.user.name}}
@@ -60,30 +72,51 @@
         </div>
       </div>
 
+      <h2 *ngIf='(posts?.length == 0) && (postTitle=="")' class="text-center text-secondary mt-5">
+        No posts yet... Write the first one!
+      </h2>
+
+      <h2 *ngIf='(posts?.length == 0) && (postTitle!="")' class="text-center text-secondary mt-5">
+        No post matches your search...
+      </h2>
+
     </div>
 
     <div class="tab-pane fade" id="myposts" role="tabpanel" aria-labelledby="nav-myposts-tab">
 
-      <div class="card-columns">
+      <div class="card-columns" *ngIf='user.posts?.length != 0'>
         <div class="card text-center" *ngFor='let post of user.posts'>
           <div class="card-body">
             <h5 class="card-title m-0">{{post.title}}</h5>
             <small class="text-muted"> Theme: {{post.theme.description}}</small>
             <p class="card-text mt-3">{{post.content}}</p>
             <p class="card-text"><small class="text-muted">
-              {{post.createdAt | date: 'dd/MM/yyyy'}} at {{post.createdAt| date: 'HH:mm'}}
-            </small></p>
-            
+                {{post.createdAt | date: 'dd/MM/yyyy'}} at {{post.createdAt| date: 'HH:mm'}}
+              </small></p>
             <a [routerLink]="['/posts/edit/', post.id]" class="text-info mr-3" href="">Edit</a>
             <a [routerLink]="['/posts/delete/', post.id]" class="text-danger" href="">Delete</a>
-
           </div>
         </div>
       </div>
 
+      <h2 *ngIf='user.posts?.length == 0' class="text-center text-secondary mt-5">
+        You didn't published yet... Write the first one!
+      </h2>
+
     </div>
 
     <div class="tab-pane fade" id="bytheme" role="tabpanel" aria-labelledby="nav-bytheme-tab">
+
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-4">
+
+          <div class="form-group mb-5">
+            <input type="text" class="form-control" id="theme-search" placeholder="Search by theme"
+              [(ngModel)]='themeDescription' (keyup)='findThemeByDescription()'>
+          </div>
+
+        </div>
+      </div>
 
 
       <div class="card-columns" *ngFor='let theme of themes'>
@@ -92,8 +125,8 @@
             <h5 class="card-title m-0">{{post.title}}</h5>
             <p class="card-text mt-3">{{post.content}}</p>
             <p class="card-text"><small class="text-muted">
-              {{post.createdAt | date: 'dd/MM/yyyy'}} at {{post.createdAt| date: 'HH:mm'}}
-            </small></p>
+                {{post.createdAt | date: 'dd/MM/yyyy'}} at {{post.createdAt| date: 'HH:mm'}}
+              </small></p>
 
             <p class="card-text"><small class="text-muted">
                 by: {{post.user.name}}
@@ -102,6 +135,11 @@
           </div>
         </div>
       </div>
+
+
+      <h2 *ngIf='(themes?.length == 0) && (themeDescription!="")' class="text-center text-secondary mt-5">
+        No theme matches your search...
+      </h2>
 
     </div>
   </div>
