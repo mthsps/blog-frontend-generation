@@ -34,9 +34,12 @@ export class AuthService {
     {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
 
-
   signedin(){
     return environment.token != ''
+  }
+
+  isAdmin() {
+    return environment.type == 'admin'
   }
 
 }

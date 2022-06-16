@@ -34,6 +34,7 @@ export class SigninComponent implements OnInit {
       environment.email = this.userLogin.email
       environment.imageUrl = this.userLogin.imageUrl
       environment.token = this.userLogin.token
+      environment.type = this.userLogin.type
 
       this.router.navigate(['/home'])
     }, err =>{

@@ -26,6 +26,11 @@ export class ThemeComponent implements OnInit {
       this.router.navigate(['/signin'])
     }
 
+    if(environment.type != 'admin'){
+      this.alertService.showAlertInfo('You need to be admin to access this page')
+      this.router.navigate(['/home'])
+    }
+
     this.findAllThemes()
   }
 
