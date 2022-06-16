@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../model/User';
+import { AlertsService } from '../service/alerts.service';
 import { AuthService } from '../service/auth.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class SignupComponent implements OnInit {
   selectedUserType: string
 
   constructor(
+    private alertService: AlertsService,
     private authService: AuthService,
     private router: Router
   ) { }
@@ -35,12 +37,12 @@ export class SignupComponent implements OnInit {
     this.user.type = this.selectedUserType
 
     if (this.user.password != this.confirmedPassword) {
-      alert("Passwords are different")
+      this.alertService.showAlertDanger("Passwords are different")
     } else {
       this.authService.signup(this.user).subscribe((resp: User) => {
         this.user = resp
         this.router.navigate(['/signin'])
-        alert("New user created")
+        this.alertService.showAlertSuccess("New user created")
       })
     }
 

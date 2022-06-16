@@ -18,6 +18,8 @@ import { ThemeEditComponent } from './theme-edit/theme-edit.component';
 import { PostDeleteComponent } from './post-delete/post-delete.component';
 import { PostEditComponent } from './post-edit/post-edit.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { AlertsComponent } from './alerts/alerts.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -32,14 +34,16 @@ import { UserEditComponent } from './user-edit/user-edit.component';
     ThemeEditComponent,
     PostDeleteComponent,
     PostEditComponent,
-    UserEditComponent
+    UserEditComponent,
+    AlertsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot()
   ],
   providers: [{
     provide: LocationStrategy,

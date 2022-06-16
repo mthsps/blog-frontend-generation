@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Post } from '../model/Post';
 import { Theme } from '../model/Theme';
+import { AlertsService } from '../service/alerts.service';
 import { PostService } from '../service/post.service';
 import { ThemeService } from '../service/theme.service';
 
@@ -23,7 +24,8 @@ export class PostEditComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private postService: PostService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private alertService: AlertsService
   ) { }
 
   ngOnInit() {
@@ -64,7 +66,7 @@ export class PostEditComponent implements OnInit {
 
     this.postService.putPost(this.post).subscribe((resp: Post) => {
       this.post = resp
-      alert('Post updated!')
+      this.alertService.showAlertSuccess('Post updated!')
       this.router.navigate(['/home'])
     })
   }

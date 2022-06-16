@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Theme } from '../model/Theme';
+import { AlertsService } from '../service/alerts.service';
 import { ThemeService } from '../service/theme.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class ThemeEditComponent implements OnInit {
 
   constructor(
     private themeService: ThemeService,
+    private alertService: AlertsService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -35,10 +37,15 @@ export class ThemeEditComponent implements OnInit {
   }
 
   update(){
+    this.theme.posts = []
     this.themeService.putTheme(this.theme).subscribe((resp: Theme)=>{
       this.theme = resp
-      alert('Theme updated!')
+      this.alertService.showAlertSuccess('Theme updated!')
       this.router.navigate(['/themes'])
+    } , err => {
+      if(err.status == 409 || err.status == 500) {
+        this.alertService.showAlertInfo("Theme already exits")
+      }
     })
   }
 }

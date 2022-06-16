@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { User } from '../model/User';
+import { AlertsService } from '../service/alerts.service';
 import { AuthService } from '../service/auth.service';
 import { UserService } from '../service/user.service';
 
@@ -19,6 +20,7 @@ export class UserEditComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private userService: UserService,
+    private alertService: AlertsService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -46,12 +48,12 @@ export class UserEditComponent implements OnInit {
     this.user.posts = []
 
     if (this.user.password != this.confirmedPassword) {
-      alert('Passwords are different')
+      this.alertService.showAlertDanger('Passwords are different')
     } else {
       this.userService.putUser(this.user).subscribe((resp: User) => {
         this.user = resp
         this.router.navigate(['/signin'])
-        alert('User updated. Sign in again.')
+        this.alertService.showAlertSuccess('User updated. Sign in again.')
         environment.token = ''
         environment.name = ''
         environment.imageUrl = ''

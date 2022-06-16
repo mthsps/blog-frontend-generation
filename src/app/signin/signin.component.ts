@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { UserLogin } from '../model/UserLogin';
+import { AlertsService } from '../service/alerts.service';
 import { AuthService } from '../service/auth.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class SigninComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private alertService: AlertsService,
     private router: Router
   ) { }
 
@@ -36,7 +38,7 @@ export class SigninComponent implements OnInit {
       this.router.navigate(['/home'])
     }, err =>{
       if(err.status == 500 || err.status == 401) {
-        alert("User not found or incorrect password")
+        this.alertService.showAlertDanger("User not found or incorrect password")
       }
     })
   }

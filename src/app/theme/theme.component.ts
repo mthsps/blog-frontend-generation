@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Theme } from '../model/Theme';
+import { AlertsService } from '../service/alerts.service';
 import { ThemeService } from '../service/theme.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class ThemeComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private alertService: AlertsService
   ) { }
 
   ngOnInit(){
@@ -37,9 +39,13 @@ export class ThemeComponent implements OnInit {
     this.themeService.postTheme(this.theme).subscribe((resp:Theme)=>{
       this.theme=resp
 
-      alert('Theme created!')
+      this.alertService.showAlertSuccess('Theme created!')
       this.findAllThemes()
       this.theme = new Theme()
+    }, err => {
+      if(err.status == 409 || err.status == 500) {
+        this.alertService.showAlertInfo("Theme already exits")
+      }
     })
   }
 
