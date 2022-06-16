@@ -20,6 +20,7 @@ import { PostEditComponent } from './post-edit/post-edit.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { AlertsComponent } from './alerts/alerts.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { OrderModule } from 'ngx-order-pipe';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     RouterModule,
     HttpClientModule,
     FormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(), 
+    OrderModule
   ],
   providers: [{
     provide: LocationStrategy,

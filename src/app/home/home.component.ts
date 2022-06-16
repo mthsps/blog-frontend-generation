@@ -16,6 +16,9 @@ import { ThemeService } from '../service/theme.service';
 })
 export class HomeComponent implements OnInit {
 
+  key = 'data'
+  reverse = true
+
   post: Post = new Post()
   posts: Post[]
   postTitle: string
