@@ -1,27 +1,12 @@
-# BlogGeneration
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.7.
+![Screenshot from 2022-06-19 14-37-00](https://user-images.githubusercontent.com/78484194/174493589-791c3af5-b343-4709-8382-37fc4cb5b370.png)
 
-## Development server
+Blog built during the bootcamp of Generation Brazil, using Angular and Bootstrap, and deployed with Netlily. It allows you to create, retrieve, edit and delete posts, and create and edit users. Each post can be related to one theme.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The page can be accessed [here](https://blog-angular-generation.netlify.app/).
 
-## Code scaffolding
+It is connected with a backend also developed during the bootcamp, whose repository can be accessed [here](https://github.com/mthsps/blog-backend-generation/).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Possibile improvements
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The blog was built for learning purposes and therefore lacks many aspects of a blog, such as images and comments. It would be important to improve security and implement cookies or sessions for better user experience. These features could be added with more time and adaptations in the current project.
